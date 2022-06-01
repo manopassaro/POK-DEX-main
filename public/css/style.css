@@ -50,12 +50,24 @@ h1{
 }
 
 .card{
-    margin: 10px 10px 10px 10px;
+    margin: 10px auto;
     background-color: white  ;
     display: flex;
     flex-direction: column;
     border: solid 3px rgb(250, 100, 100);
     border-radius: 1rem;
+}
+
+@media screen and (max-device-width: 300px){
+    .card .foto {
+        width: 80%;
+    }
+    #tituloLista {
+        width: 40% ;
+    }
+    #dex{
+        width: 80%;
+    }
 }
 
 .campo{
