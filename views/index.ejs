@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Ponkemon</title>
+</head>
+
+<body>
+    
+
+    
+    <header>
+        <nav>
+            <ul>
+                <!-- <li><a href="home">HOME</a></li> -->
+                <li><a href="#cadastre"><span id="iconCadastrar" class="material-symbols-outlined" >
+                        edit_note
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <h1 id="inicio">POKÉDEX</h1>
+        <figure>
+            <img src="img/pokedex.png" alt="Imagem não compatível" width="110px">
+        </figure>
+    </header>
+
+    <main>
+
+        <h2 id="tituloLista">Lista de Pokémons</h2>
+
+        <section id="lista">
+
+            <% pokedex.forEach((pokemon) => { %>
+            <div class="card">
+                <figure class="campo">
+                <img class="foto" src="<%= pokemon.imagem %>" alt="" width="200px">
+                </figure>
+                <button onclick="showModal('<%= pokemon.id %>')" class="btn"><%= pokemon.nome %></button>
+            </div>
+            <% })%>
+
+        </section>
+
+        <section>
+            
+            <article class="topico">
+                <h2 id="cadastre">Cadastre</h2>
+                <a href="#inicio"><span id="iconHome" class="material-symbols-outlined">
+                        home
+                    </span>
+                </a>
+            </article>
+            <form action="/add" method="POST">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="imagem">Imagem:</label>
+                <input type="text" id="imagem" name="imagem" required>
+
+                <label for="tipo">Tipo:</label>
+                <input type="text" id="tipo" name="tipo" required>
+
+                <label for="altura">Altura:</label>
+                <input type="text" id="altura" name="altura" required>
+
+                <label for="peso">Peso:</label>
+                <input type="text" id="peso" name="peso" required>
+
+                
+
+                <button id="cadastrar" type="submit">Cadastrar</button>
+
+            </form>
+
+        </section>
+
+
+        <section>
+        <% pokedex.forEach((pokemon) => { %>        
+            <div class="modal" id="<%= pokemon.id %>">
+                <div class="modal-content">
+                    <span onclick="hideModal('<%= pokemon.id %>')">&times;</span>
+                    <figure class="campo">
+                        <img class="fotoCard" src="<%= pokemon.imagem %>" alt="" width="200px">
+                    </figure>
+                    <h3><%= pokemon.nome %></h3>
+                    <article>
+                        <div>
+                            <p>TIPO: <%= pokemon.tipo %></p>
+                            <p>ALTURA: <%= pokemon.altura %></p>
+                            <p>PESO: <%= pokemon.peso %></p>
+                        </div>
+                        <a id= "lixeira" href="/delete/<%= pokemon.id%>"><span class="material-symbols-outlined">
+                            delete
+                            </span></a>
+                    </article>
+                </div>
+            </div>
+
+            <% })  %>
+        </section>
+
+
+        <% if(message != "") {  %>
+            <section id="message">
+                <p><%= message %></p> <span id="close">&times;</span>
+            </section>
+        <% }  %>
+        
+
+
+        <script src="/js/script.js"></script>
+
+
+    </main>
+    
+    
+</body>
+</html>
