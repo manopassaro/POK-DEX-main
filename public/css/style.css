@@ -241,3 +241,20 @@ section#message {
     color: rgb(255, 0, 0);
     transform: scale(1.2);
   }
+
+  footer{
+    background-color: rgb(250, 100, 100);
+    padding: 10px 80px;
+  }
+
+  #direitos{
+      color: rgb(41, 41, 41);
+      text-align: center;
+  }
+
+  #ig{
+      text-decoration: none;
+      color: rgb(20, 20, 20);
+  }
+
+  
